@@ -1088,6 +1088,11 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
+"@metamask/detect-provider@^1.2.0":
+  "integrity" "sha512-ocA76vt+8D0thgXZ7LxFPyqw3H7988qblgzddTDA6B8a/yU0uKV42QR/DhA+Jh11rJjxW0jKvwb5htA6krNZDQ=="
+  "resolved" "https://registry.npmjs.org/@metamask/detect-provider/-/detect-provider-1.2.0.tgz"
+  "version" "1.2.0"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   "integrity" "sha512-bPHp6Ji8b41szTOcaP63VlnbbO5Ny6dwAATtY6JTjh5N2OLrb5Qk/Th5cRkRQhkWCt+EJsYrNB0MiL+Gpn6e3g=="
   "resolved" "https://registry.npmjs.org/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz"
@@ -10568,9 +10573,9 @@
     "xtend" "^4.0.0"
 
 "tar@^4.0.2":
-  "integrity" "sha512-w2VwSrBoHa5BsSyH+KxEqeQBAllHhccyMFVHtGtdMpF4W7IRWfZjFiQceJPChOeTsSDVUpER2T8FA93pr0L+QA=="
-  "resolved" "https://registry.npmjs.org/tar/-/tar-4.4.13.tgz"
-  "version" "4.4.13"
+  "integrity" "sha512-ItbufpujXkry7bHH9NpQyTXPbJ72iTlXgkBAYsAjDXk3Ds8t/3NfO5P4xZGy7u+sYuQUbimgzswX4uQIEeNVOA=="
+  "resolved" "https://registry.npmjs.org/tar/-/tar-4.4.15.tgz"
+  "version" "4.4.15"
   dependencies:
     "chownr" "^1.1.1"
     "fs-minipass" "^1.2.5"

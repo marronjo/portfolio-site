@@ -13,7 +13,7 @@ class SetGet extends Component {
       const web3 = await getWeb3();
 
       // Use web3 to get the user's accounts.
-      const accounts = await web3.eth.getAccounts();
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
 
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
@@ -25,7 +25,7 @@ class SetGet extends Component {
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({ web3, accounts, contract: instance }, this.runExample);
+        this.setState({ web3, accounts, contract: instance }, this.runExample);
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -36,13 +36,21 @@ class SetGet extends Component {
   };
 
   runExample = async () => {
-    const { accounts, contract } = this.state;
+    const { contract } = this.state;
+
+    //console.log(accounts[0]);
+
+    //console.log(await contract.methods);
 
     // Stores a given value, 5 by default.
-    await contract.methods.set(5).send({ from: accounts[1] });
+    //await contract.methods.set(5).send({ from: accounts[0] });
+
+    //console.log("first one worked");
 
     // Get the value from the contract to prove it worked.
     const response = await contract.methods.get().call();
+
+    console.log(response);
 
     // Update state with the result.
     this.setState({ storageValue: response });
@@ -53,7 +61,7 @@ class SetGet extends Component {
     const { accounts, contract } = this.state;
 
     // Stores a given value, 5 by default.
-    await contract.methods.set(this.state.update).send({ from: accounts[1] });
+    await contract.methods.set(this.state.update).send({ from: accounts[0] });
 
     // Get the value from the contract to prove it worked.
     const response = await contract.methods.get().call();
@@ -72,11 +80,11 @@ class SetGet extends Component {
     }
     return (
       <div className="App">
-        <h1>First Full Stack Truffle App</h1>
+        <h3>First Full Stack Truffle App</h3>
         <div>
-          <p>Enter a number into the box below and hit submit!</p>
+          <p>Enter a number into the box below and hit submit! Then confirm on MetaMask</p>
         </div>
-        <div className="value">The stored value is:  {this.state.storageValue}</div>
+        <div className="value">The stored value is:  {this.state.storageValue !== null ? this.state.storageValue : 0}</div>
         <div>
           <input className="input" onChange={this.handleInput} placeholder="Enter Number"/>
           <button onClick={this.update} className="button button1">Submit</button>
