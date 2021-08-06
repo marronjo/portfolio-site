@@ -5,7 +5,17 @@ import getWeb3 from "./getWeb3";
 import "./SetGet.css";
 
 class SetGet extends Component {
-  state = { storageValue: 0, web3: null, accounts: null, contract: null, update: 0};
+  state = { 
+    storageValue: 0, 
+    web3: null, 
+    accounts: null, 
+    contract: null, 
+    update: 0, 
+    recent: null, 
+    time: null, 
+    block: null,
+    link: "",
+  };
 
   componentDidMount = async () => {
     try {
@@ -25,7 +35,7 @@ class SetGet extends Component {
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-        this.setState({ web3, accounts, contract: instance }, this.runExample);
+        this.setState({ web3, accounts, contract: instance }, this.setup);
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -35,7 +45,7 @@ class SetGet extends Component {
     }
   };
 
-  runExample = async () => {
+  setup = async () => {
     const { contract } = this.state;
 
     //console.log(accounts[0]);
@@ -48,12 +58,17 @@ class SetGet extends Component {
     //console.log("first one worked");
 
     // Get the value from the contract to prove it worked.
-    const response = await contract.methods.get().call();
+    const response = await contract.methods.getData().call();
+    const recent = await contract.methods.getAddress().call();
+    const time = await contract.methods.getTime().call();
+    const block = await contract.methods.getBlock().call();
 
     console.log(response);
 
+    const link = "https://ropsten.etherscan.io/address/" + recent;
+
     // Update state with the result.
-    this.setState({ storageValue: response });
+    this.setState({ storageValue: response , recent, time, block, link });
   };
 
   update = async () => {
@@ -64,10 +79,15 @@ class SetGet extends Component {
     await contract.methods.set(this.state.update).send({ from: accounts[0] });
 
     // Get the value from the contract to prove it worked.
-    const response = await contract.methods.get().call();
+    const response = await contract.methods.getData().call();
+    const recent = await contract.methods.getAddress().call();
+    const time = await contract.methods.getTime().call();
+    const block = await contract.methods.getBlock().call();
+
+    console.log(recent + " " + time + " " + block);
 
     // Update state with the result.
-    this.setState({ storageValue: response });
+    this.setState({ storageValue: response, recent, time, block  }); 
   };
 
   handleInput = event => {
@@ -82,7 +102,13 @@ class SetGet extends Component {
       <div className="App">
         <h3>First Full Stack Truffle App</h3>
         <div>
-          <p>Enter a number into the box below and hit submit! Then confirm on MetaMask</p>
+          <h4>Enter a number into the box below and hit submit! Then confirm on MetaMask</h4>
+        </div>
+        <div>
+          <p>Latest user: {this.state.recent !== null ? this.state.recent : 0}</p>
+          <p>Timestamp: {this.state.time !== null ? this.state.time : 0}</p>
+          <p>Block Number: {this.state.block !== null ? this.state.block : 0}</p>
+          <a href={this.state.link}>View User Here</a>
         </div>
         <div className="value">The stored value is:  {this.state.storageValue !== null ? this.state.storageValue : 0}</div>
         <div>
