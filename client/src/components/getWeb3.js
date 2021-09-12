@@ -18,7 +18,8 @@ const getWeb3 = () =>
           //console.log(address);
           resolve(web3);
       }
-
+    
+    
       /*const link = 'https://ropsten.infura.io/v3/8889000a15cc4de29d8a720bf311254c';
       const web3 = new Web3(link);
       resolve(web3);

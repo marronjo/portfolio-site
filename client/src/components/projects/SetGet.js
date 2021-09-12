@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import SimpleStorageContract from "./contracts/SimpleStorage.json";
-import getWeb3 from "./getWeb3";
+import SimpleStorageContract from "../../contracts/SimpleStorage.json";
+import getWeb3 from "../getWeb3";
 
 import "./SetGet.css";
 
@@ -96,19 +96,28 @@ class SetGet extends Component {
 
   render() {
     if (!this.state.web3) {
-      return <div>Loading Web3, accounts, and contract...</div>;
+      return(
+        <div>
+          <p>Loading Web3, accounts, and contract...</p>
+          <p>Make sure you have MetaMask installed!</p>
+        </div>
+      );
     }
     return (
       <div className="App">
-        <h3>First Full Stack Truffle App</h3>
         <div>
           <h4>Enter a number into the box below and hit submit! Then confirm on MetaMask</h4>
         </div>
         <div>
-          <p>Latest user: {this.state.recent !== null ? this.state.recent : 0}</p>
-          <p>Timestamp: {this.state.time !== null ? this.state.time : 0}</p>
-          <p>Block Number: {this.state.block !== null ? this.state.block : 0}</p>
-          <a href={this.state.link}>View User Here</a>
+          <p>Latest user: {this.state.recent ? this.state.recent : 0}</p>
+          <p>Timestamp: {this.state.time ? this.state.time : 0}</p>
+          <p>Block Number: {this.state.block ? this.state.block : 0}</p>
+          <div>
+            <a href={this.state.link}>View User Here</a>
+          </div>
+          <div>
+            <a href="https://ropsten.etherscan.io/address/0x0d76e6339f38142b5faf3b91840c16686a8ddb1f">View Contract Here</a>
+          </div>
         </div>
         <div className="value">The stored value is:  {this.state.storageValue !== null ? this.state.storageValue : 0}</div>
         <div>

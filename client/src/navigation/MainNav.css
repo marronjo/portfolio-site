@@ -1,0 +1,41 @@
+
+.navbar {
+    height: 80px;
+    width: 100%;
+    background: #111;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    font-size: 1.2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s all;
+    vertical-align: middle;
+}
+
+.nav-link:hover {
+    color: lightseagreen;
+}
+
+.nav-links {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 20px;
+    list-style: none;
+}
+
+.nav_item {
+    padding: 10px 0;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+}
+
+.nav-logo {
+    text-decoration: none;
+    color: white;
+}

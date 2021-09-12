@@ -1,12 +1,25 @@
 import React from "react";
-import SetGet from './SetGet';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import MainNav from './navigation/MainNav';
+import SetGet from './components/projects/SetGet';
+import Home from './components/Home';
+import Projects from './components/Projects';
+
+
+import './App.css';
 
 function App(){
     return(
-        <div align="center">
-            <h1>Welcome to my portfolio website</h1>
-            <a href="https://github.com/marronjo">Github</a>
-            <SetGet />
+        <div className="App">
+            <Router>
+                <MainNav />
+                <Switch>
+                    <Route path="/" exact component={Home} />
+                    <Route path="/projects" exact component={Projects} />
+                    <Route path="/projects/storage" exact component={SetGet} />
+                </Switch>
+            </Router>
         </div>
     );
 }

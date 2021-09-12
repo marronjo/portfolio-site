@@ -1,19 +1,30 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import './MainNav.css';
 
 function MainNav(){
     return(
-            <header>
-                <nav>
-                    <ul>
-                        <li>
-                            First Project
-                        </li>
-                        <li>Compound Finance Tracker</li>
-                        <li>DEX Project</li>
-                    </ul>
-                </nav>
-            </header>
+        <nav className="navbar">
+            <ul className="nav-links">
+                <li className="nav-item">
+                    <Link to="/" className="nav-link">
+                        Home
+                    </Link>
+                </li>
+                <li className="nav-item">
+                    <Link to="/projects" className="nav-link">
+                        Projects
+                    </Link>
+                </li>
+            </ul>
+            <p>Joe's Portfolio Website</p>
+        </nav>
     );
 }
 
 export default MainNav;
+
+/*
+
+*/ 
