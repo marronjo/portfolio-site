@@ -1,1 +1,5 @@
 /secrets.json
+
+#build info
+/client/build
+/client/node_modules
