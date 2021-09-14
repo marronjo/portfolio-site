@@ -1,11 +1,9 @@
 import React from 'react';
 import Card from '../ui/Card';
-//import Comp from './projects/Comp';
 
 function Home(){
     return(
         <div align="left">
-            
             <Card />
         </div>
     );

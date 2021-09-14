@@ -1,5 +1,6 @@
 const path = require("path");
 const mnemonic = require("./secrets.json").mnemonic;
+const infura = require("./secrets.json").infura;
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 module.exports = {
@@ -9,7 +10,7 @@ module.exports = {
   networks: {
 
     ropsten: {
-      provider: () => new HDWalletProvider(mnemonic, "https://ropsten.infura.io/v3/8889000a15cc4de29d8a720bf311254c"),
+      provider: () => new HDWalletProvider(mnemonic, infura),
       network_id: '3',
       gas: 5500000,
       confirmations: 2,
