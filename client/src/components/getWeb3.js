@@ -1,7 +1,6 @@
 import Web3 from "web3";
 import detectEthereumProvider from '@metamask/detect-provider';
 
-
 const getWeb3 = () =>
   new Promise((resolve, reject) => {
     // Wait for loading completion to avoid race conditions with web3 injection timing.
@@ -17,25 +16,6 @@ const getWeb3 = () =>
           //const address = await ConnectWallet();
           //console.log(address);
           resolve(web3);
-      }
-    
-    
-      /*const link = 'https://ropsten.infura.io/v3/8889000a15cc4de29d8a720bf311254c';
-      const web3 = new Web3(link);
-      resolve(web3);
-      
-      // Modern dapp browsers...
-      if (typeof window.ethereum.isMetaMask !== 'undefined') {
-        //const web3 = new Web3('https://ropsten.infura.io/v3/8889000a15cc4de29d8a720bf311254c');
-        try {
-          // Request account access if needed
-          await window.ethereum.request({ method: 'eth_requestAccounts' });
-          console.log("METAMASK");
-          // Accounts now exposed
-          resolve(web3);
-        } catch (error) {
-          reject(error);
-        }
       }
       // Legacy dapp browsers...
       /*else if (window.web3) {
